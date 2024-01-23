@@ -44,7 +44,7 @@ function displayUserData(userData) {
   }
   
   liff.init(
-    { liffId: "1656445155-nD0X9DGy" },
+    { liffId: "2002580879-qJ4k4gVe" },
     async () => {
       if (liff.isLoggedIn()) {
         await runApp();
