@@ -1,26 +1,21 @@
 function displayUserData(userData) {
-    var userDataContainer = document.getElementById('userDataContainer');
-    userDataContainer.innerHTML = '';
+    // Update Student Information
+    document.getElementById("en_name").textContent = "Name (EN): " + userData['English Full Name / ชื่อ-นามสกุลภาษาอังกฤษ'];
+    document.getElementById("th_name").textContent = "Name (TH): " + userData['Thai Full Name / ชื่อ-นามสกุลภาษาไทย'];
+    document.getElementById("stu_id").textContent = "Student ID: " + userData['Student ID / รหัสนักศึกษา'];
+    document.getElementById("stu_email").textContent = "Email: " + userData['ที่อยู่อีเมล'];
   
-    if (userData.hasOwnProperty('stu_id')) {
-      // Display user data in a table
-      var table = document.createElement('table');
-      var headers = Object.keys(userData);
+    // Update Simulation Test
+    document.getElementById("pre_listening").textContent = "Listening: " + userData['PRE_LISTENING'];
+    document.getElementById("pre_reading").textContent = "Reading: " + userData['PRE_READING'];
+    var preTotal = parseInt(userData['PRE_LISTENING']) + parseInt(userData['PRE_READING']);
+    document.getElementById("pre_total").textContent = "Total: " + preTotal;
   
-      for (var i = 0; i < headers.length; i++) {
-        var row = table.insertRow();
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-  
-        cell1.textContent = headers[i];
-        cell2.textContent = userData[headers[i]];
-      }
-  
-      userDataContainer.appendChild(table);
-    } else {
-      // User not found
-      userDataContainer.textContent = 'User not found';
-    }
+    // Update Post-Test
+    document.getElementById("post_listening").textContent = "Listening: " + userData['POST_LISTENING'];
+    document.getElementById("post_reading").textContent = "Reading: " + userData['POST_READING'];
+    var postTotal = parseInt(userData['POST_LISTENING']) + parseInt(userData['POST_READING']);
+    document.getElementById("post_total").textContent = "Total: " + postTotal;
   }
   
   async function runApp() {
@@ -34,10 +29,6 @@ function displayUserData(userData) {
         .then(response => response.json())
         .then(data => displayUserData(data))
         .catch(error => console.error('Error fetching user data:', error));
-  
-      // Rest of your code
-      // document.getElementById("line_userId").value = profile.userId;
-      // document.getElementById("displayName").value = profile.displayName;
     } catch (err) {
       console.error(err);
     }
@@ -52,6 +43,6 @@ function displayUserData(userData) {
         liff.login();
       }
     },
-    (err) => console.error(err.code, error.message)
+    (err) => console.error(err.code, err.message)
   );
   
