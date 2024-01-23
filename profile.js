@@ -1,3 +1,5 @@
+const popup2 = document.getElementById("popup2");
+
 function displayUserData(userData) {
     console.log(userData);
     // Update Student Information
@@ -17,6 +19,8 @@ function displayUserData(userData) {
     document.getElementById("post_reading").textContent = "Reading: " + userData['post_reading'];
     var postTotal = parseInt(userData['post_listening']) + parseInt(userData['post_reading']);
     document.getElementById("post_total").textContent = "Total: " + postTotal;
+
+    popup2.classList.add("d-none");
 }
 
 async function runApp() {
