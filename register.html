@@ -309,13 +309,12 @@
         async function runApp() {
             try {
                 const profile = await liff.getProfile();
-                const line_userId = profile.userId;
-                const displayName = profile.displayName;
+                var line_userId = profile.userId;
+                var displayName = profile.displayName;
 
                 // Check if line_userId exists in your API
                 const apiUrl = 'https://script.google.com/macros/s/AKfycbyORnSxMGZf3o90on0M0xHjRCT_pfDvNKuvvbmPOzs19Blx9t-Z_0SKhXUcP7w80c3g3Q/exec'; // Replace with your actual API endpoint
                 const response = await fetch(apiUrl + '?userlineid=' + line_userId);
-                console.log(response);
                 const data = await response.json();
 
                 if (data && data.line_id) {
@@ -327,6 +326,7 @@
                 }
 
             } catch (err) {
+                window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd7TF7NvNTtdSwh0HADH-VOySBr6t7mcDHuxLNiusXJN8BXRA/viewform?usp=pp_url&entry.467254449=" + line_userId + "&entry.1559541434=" + displayName;
                 console.error(err);
             }
         }
