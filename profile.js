@@ -40,10 +40,15 @@ async function runApp() {
         fetch(apiUrl + '?userlineid=' + line_userId)
             .then(response => response.json())
             .then(data => displayUserData(data))
-            .catch(error => console.error('Error fetching user data:', error));
-    } catch (err) {
-        window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd7TF7NvNTtdSwh0HADH-VOySBr6t7mcDHuxLNiusXJN8BXRA/viewform?usp=pp_url&entry.467254449=" + line_userId + "&entry.1559541434=" + displayName;
-        console.error(err);
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                // Redirect to another page in case of an error
+                window.location.href = 'https://liff.line.me/2002580879-lYQ3Q9VL'; // Replace 'error-page.html' with the actual URL of your error page
+            });
+    } catch (error) {
+        console.error('Error getting LINE profile:', error);
+        // Redirect to another page in case of an error
+        window.location.href = 'https://liff.line.me/2002580879-lYQ3Q9VL';
     }
 }
 
