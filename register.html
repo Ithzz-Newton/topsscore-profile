@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Your head content goes here -->
+</head>
+
+<style>
+    .row2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .p {
+        font-family: 'Overlock', cursive;
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+
+    }
+</style>
+
+<body class="page" style="background-color: #ffffff !important;">
+
+    <main>
+        <div class="row2">
+
+            <!-- Popup container -->
+            <div id="popup2" class="popup overlay">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                    type="module"></script>
+
+                <dotlottie-player src="https://lottie.host/775cb6c2-593e-4dfb-a56f-73c4d846ab09/YCfEhQP7LO.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                    autoplay></dotlottie-player>
+                <p style="margin-top: 0px !important;">Please wait, loading...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
+    <!-- noty core js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
+        integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        async function runApp() {
+            try {
+                const profile = await liff.getProfile();
+                const line_userId = profile.userId;
+                const displayName = profile.displayName;
+
+                // Check if line_userId exists in your API
+                const apiUrl = 'https://script.google.com/macros/s/AKfycbyORnSxMGZf3o90on0M0xHjRCT_pfDvNKuvvbmPOzs19Blx9t-Z_0SKhXUcP7w80c3g3Q/exec'; // Replace with your actual API endpoint
+                const response = await fetch(apiUrl + '?userlineid=' + line_userId);
+                const data = await response.json();
+
+                if (data && data.line_id) {
+                    // Redirect to a specific page if line_userId exists in your API
+                    window.location.href = "https://liff.line.me/2002580879-qJ4k4gVe";
+                } else {
+                    // Use the old flow
+                    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd7TF7NvNTtdSwh0HADH-VOySBr6t7mcDHuxLNiusXJN8BXRA/viewform?usp=pp_url&entry.467254449=" + line_userId + "&entry.1559541434=" + displayName;
+                }
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        liff.init(
+            { liffId: "2002580879-1L343yV7" },
+            async () => {
+                if (liff.isLoggedIn()) {
+                    await runApp();
+                } else {
+                    liff.login();
+                }
+            },
+            (err) => console.error(err.code, error.message)
+        );
+    </script>
+
+</body>
+
+</html>
