@@ -3,7 +3,7 @@ const popup2 = document.getElementById("popup2");
 // Get the "Go Back" button by its ID
 var backButton = document.getElementById("submitButton");
 backButton.addEventListener("click", function () {
-  window.location.href = "https://lin.ee/MGewJgF";
+    window.location.href = "https://lin.ee/MGewJgF";
 });
 
 function displayUserData(userData) {
@@ -32,7 +32,8 @@ function displayUserData(userData) {
 async function runApp() {
     try {
         const profile = await liff.getProfile();
-        const line_userId = profile.userId;
+        var line_userId = profile.userId;
+        var displayName = profile.displayName;
 
         var apiUrl = 'https://script.google.com/macros/s/AKfycbyORnSxMGZf3o90on0M0xHjRCT_pfDvNKuvvbmPOzs19Blx9t-Z_0SKhXUcP7w80c3g3Q/exec'; // Replace with the actual URL of your deployed web app
 
@@ -41,6 +42,7 @@ async function runApp() {
             .then(data => displayUserData(data))
             .catch(error => console.error('Error fetching user data:', error));
     } catch (err) {
+        window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd7TF7NvNTtdSwh0HADH-VOySBr6t7mcDHuxLNiusXJN8BXRA/viewform?usp=pp_url&entry.467254449=" + line_userId + "&entry.1559541434=" + displayName;
         console.error(err);
     }
 }
