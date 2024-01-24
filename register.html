@@ -316,7 +316,7 @@
                 const apiUrl = 'https://script.google.com/macros/s/AKfycbyORnSxMGZf3o90on0M0xHjRCT_pfDvNKuvvbmPOzs19Blx9t-Z_0SKhXUcP7w80c3g3Q/exec'; // Replace with your actual API endpoint
                 const response = await fetch(apiUrl + '?userlineid=' + line_userId);
                 const data = await response.json();
-                console.log(data);
+                console.log(response);
 
                 if (data && data.line_id) {
                     // Redirect to a specific page if line_userId exists in your API
