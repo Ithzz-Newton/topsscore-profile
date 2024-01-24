@@ -1,24 +1,30 @@
 const popup2 = document.getElementById("popup2");
 
+// Get the "Go Back" button by its ID
+var backButton = document.getElementById("submitButton");
+backButton.addEventListener("click", function () {
+  window.location.href = "https://lin.ee/MGewJgF";
+});
+
 function displayUserData(userData) {
     console.log(userData);
     // Update Student Information
-    document.getElementById("en_name").textContent = "Name (EN): " + userData['en_name'];
-    document.getElementById("th_name").textContent = "Name (TH): " + userData['th_name'];
-    document.getElementById("stu_id").textContent = "Student ID: " + userData['stu_id'];
-    document.getElementById("stu_email").textContent = "Email: " + userData['stu_email'];
+    document.getElementById("en_name").innerHTML = "<strong>Name (EN): </strong>" + userData['en_name'];
+    document.getElementById("th_name").innerHTML = "<strong>Name (TH): </strong>" + userData['th_name'];
+    document.getElementById("stu_id").innerHTML = "<strong>Student ID: </strong>" + userData['stu_id'];
+    document.getElementById("stu_email").innerHTML = "<strong>Email: </strong>" + userData['stu_email'];
 
     // Update Simulation Test
-    document.getElementById("pre_listening").textContent = "Listening: " + userData['pre_listening'];
-    document.getElementById("pre_reading").textContent = "Reading: " + userData['pre_reading'];
+    document.getElementById("pre_listening").innerHTML = "<strong>Listening: </strong>" + userData['pre_listening'];
+    document.getElementById("pre_reading").innerHTML = "<strong>Reading: </strong>" + userData['pre_reading'];
     var preTotal = parseInt(userData['pre_listening']) + parseInt(userData['pre_reading']);
-    document.getElementById("pre_total").textContent = "Total: " + preTotal;
+    document.getElementById("pre_total").innerHTML = "<strong>Total: </strong>" + preTotal;
 
     // Update Post-Test
-    document.getElementById("post_listening").textContent = "Listening: " + userData['post_listening'];
-    document.getElementById("post_reading").textContent = "Reading: " + userData['post_reading'];
+    document.getElementById("post_listening").innerHTML = "<strong>Listening: </strong>" + userData['post_listening'];
+    document.getElementById("post_reading").innerHTML = "<strong>Reading: </strong>" + userData['post_reading'];
     var postTotal = parseInt(userData['post_listening']) + parseInt(userData['post_reading']);
-    document.getElementById("post_total").textContent = "Total: " + postTotal;
+    document.getElementById("post_total").innerHTML = "<strong>Total: </strong>" + postTotal;
 
     popup2.classList.add("d-none");
 }
