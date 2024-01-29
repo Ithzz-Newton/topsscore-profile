@@ -26,6 +26,8 @@ function displayUserData(userData) {
     var postTotal = parseInt(userData['post_listening']) + parseInt(userData['post_reading']);
     document.getElementById("post_total").innerHTML = "<strong>Total: </strong>" + postTotal;
 
+    var qrcode = new QRCode("qrcode",userData['stu_email']);
+
     popup2.classList.add("d-none");
 }
 
